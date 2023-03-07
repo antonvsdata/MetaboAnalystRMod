@@ -364,7 +364,8 @@ Perform.ASCA <- function(mSetObj=NA, a=1, b=2, x=2, res=2){
 #'License: MIT License
 #'@export
 #'
-CalculateImpVarCutoff <- function(mSetObj=NA, spe.thresh = 0.05, lev.thresh = 0.95){
+CalculateImpVarCutoff <- function(mSetObj=NA, spe.thresh = 0.05, lev.thresh = 0.95,
+                                  perm.num = 20){
   
   mSetObj <- .get.mSet(mSetObj);
 
@@ -393,7 +394,7 @@ CalculateImpVarCutoff <- function(mSetObj=NA, spe.thresh = 0.05, lev.thresh = 0.
     mSetLev <<- mSetObj
     
     # lev.perm is a list with each 3 col matrix (lvA, lvV, lvAB)
-    res.perm <- Perform.permutation(20, Get.asca.leverage);
+    res.perm <- Perform.permutation(perm.num, Get.asca.leverage);
 
     # perm.num may be adjusted on public server  
     perm.num <- res.perm$perm.num;
